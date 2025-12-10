@@ -51,7 +51,7 @@ const Hero = () => {
         className="relative z-10 h-dvh w-screen overflow-hidden rounded-lg bg-blue-75"
       >
         <video
-          src="videos/Screen Recording 2025-12-07 144224 (online-video-cutter.com).mp4"
+          src="videos/799a-4d2a-407d-8c92-a51222c9b7e9.webm"
           autoPlay
           loop
           muted
