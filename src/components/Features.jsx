@@ -191,17 +191,15 @@ const Features = () => (
               {/* Services list - positioned absolutely on desktop, below on mobile */}
               <div className="flex flex-row flex-wrap gap-2 sm:absolute sm:top-5 sm:right-5 sm:flex-col sm:items-end">
                 <span className="text-white/90 text-[10px] font-medium px-3 py-1.5 bg-white/15 rounded-full backdrop-blur-sm">
-                  DECENTRALIZED
+                  INSTANT DEPLOY
                 </span>
                 <span className="text-white/90 text-[10px] font-medium px-3 py-1.5 bg-white/15 rounded-full backdrop-blur-sm">
-                  SECURE MESSAGING
+                  UNIVERSAL ACCESS
                 </span>
                 <span className="text-white/90 text-[10px] font-medium px-3 py-1.5 bg-white/15 rounded-full backdrop-blur-sm">
-                  WEB3 READY
+                  MINI DAPPS
                 </span>
-                <span className="text-white/90 text-[10px] font-medium px-3 py-1.5 bg-white/15 rounded-full backdrop-blur-sm">
-                  PRIVACY FIRST
-                </span>
+
               </div>
             </div>
 

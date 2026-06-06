@@ -59,9 +59,9 @@ const Hero = () => {
           onLoadedData={handleVideoLoad}
         />
 
-        <h1 className="special-font hero-heading absolute bottom-5 right-5 z-40 text-blue-75">
+        <p className="special-font hero-heading absolute bottom-5 right-5 z-40 text-blue-75">
           ME<b>SS</b>ENGER
-        </h1>
+        </p>
 
         <div className="absolute left-0 top-0 z-40 size-full">
           <div className="mt-24 px-5 sm:px-10">
@@ -77,15 +77,15 @@ const Hero = () => {
               id="watch-trailer"
               title="Download"
               leftIcon={<TiLocationArrow />}
-              containerClass="bg-yellow-300 flex-center gap-1"
+              containerClass="!bg-[#5542ff] !text-white flex-center gap-1"
             />
           </div>
         </div>
       </div>
 
-      <h1 className="special-font hero-heading absolute bottom-5 right-5 text-black">
+      <p className="special-font hero-heading absolute bottom-5 right-5 text-black">
         ME<b>SS</b>ENGER
-      </h1>
+      </p>
     </div>
   );
 };

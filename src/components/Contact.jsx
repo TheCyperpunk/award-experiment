@@ -1,9 +1,9 @@
 import AnimatedTitle from "./AnimatedTitle";
 import Button from "./Button";
 
-const ImageClipBox = ({ src, clipClass }) => (
+const ImageClipBox = ({ src, clipClass, alt }) => (
   <div className={clipClass}>
-    <img src={src} />
+    <img src={src} alt={alt || "XMO platform feature"} />
   </div>
 );
 
@@ -15,10 +15,12 @@ const Contact = () => {
           <ImageClipBox
             src="/img/Gemini_Generated_Image_y5npl3y5npl3y5np.png"
             clipClass="contact-clip-path-1"
+            alt="XMO decentralized identity illustration"
           />
           <ImageClipBox
             src="/img/original-c4424651b4293c8812e0ef7626bfb9f3.webp"
             clipClass="contact-clip-path-2 lg:translate-y-40 translate-y-60"
+            alt="XMO secure messaging showcase"
           />
         </div>
 
@@ -26,12 +28,13 @@ const Contact = () => {
           <ImageClipBox
             src="/img/Gemini_Generated_Image_nq3dsqnq3dsqnq3d.png"
             clipClass="sword-man-clip-path md:scale-125"
+            alt="XMO Web3 platform hero visual"
           />
         </div>
 
         <div className="flex flex-col items-center text-center">
           <p className="mb-10 font-general text-[10px] uppercase">
-            Join Zentry
+            Join XMO
           </p>
 
           <AnimatedTitle
