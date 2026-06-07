@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { IoClose } from "react-icons/io5";
 
 const Section = ({ title, children }) => (
@@ -8,10 +9,16 @@ const Section = ({ title, children }) => (
   </div>
 );
 
-const TermsOfService = ({ onClose }) => {
+const TermsOfService = () => {
+  const navigate = useNavigate();
+
   useEffect(() => {
+    document.title = "Terms of Service | XMO Messenger";
     document.body.style.overflow = "hidden";
-    return () => { document.body.style.overflow = ""; };
+    return () => {
+      document.body.style.overflow = "";
+      document.title = "XMO Messenger | Decentralized Private Messaging App";
+    };
   }, []);
 
   return (
@@ -31,7 +38,7 @@ const TermsOfService = ({ onClose }) => {
             <h1 className="text-xl font-bold text-white">XMO Terms of Service</h1>
             <p className="text-xs text-gray-400 mt-0.5">Effective date: June 5, 2026</p>
           </div>
-          <button onClick={onClose} id="close-terms-of-service" aria-label="Close Terms of Service"
+          <button onClick={() => navigate(-1)} id="close-terms-of-service" aria-label="Close Terms of Service"
             className="flex h-9 w-9 items-center justify-center rounded-full bg-white/5 text-gray-400 transition-all duration-200 hover:bg-[#5542ff]/30 hover:text-white">
             <IoClose size={20} />
           </button>

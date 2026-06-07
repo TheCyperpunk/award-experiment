@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { IoClose } from "react-icons/io5";
 
 const Section = ({ title, children }) => (
@@ -12,11 +13,18 @@ const Sub = ({ title }) => (
   <h3 className="mt-5 mb-2 text-sm font-semibold text-white">{title}</h3>
 );
 
-const PrivacyPolicy = ({ onClose }) => {
+const PrivacyPolicy = () => {
+  const navigate = useNavigate();
+
   useEffect(() => {
+    document.title = "Privacy Policy | XMO Messenger";
     document.body.style.overflow = "hidden";
-    return () => { document.body.style.overflow = ""; };
+    return () => {
+      document.body.style.overflow = "";
+      document.title = "XMO Messenger | Decentralized Private Messaging App";
+    };
   }, []);
+
 
   return (
     <div className="fixed inset-0 z-[9999] flex flex-col bg-[#0d0d1a] overflow-hidden" style={{ animation: "fadeIn 0.25s ease" }}>
@@ -35,7 +43,7 @@ const PrivacyPolicy = ({ onClose }) => {
             <h1 className="text-xl font-bold text-white">XMO Privacy Policy</h1>
             <p className="text-xs text-gray-400 mt-0.5">Effective date: June 5, 2026</p>
           </div>
-          <button onClick={onClose} id="close-privacy-policy" aria-label="Close Privacy Policy"
+          <button onClick={() => navigate(-1)} id="close-privacy-policy" aria-label="Close Privacy Policy"
             className="flex h-9 w-9 items-center justify-center rounded-full bg-white/5 text-gray-400 transition-all duration-200 hover:bg-[#5542ff]/30 hover:text-white">
             <IoClose size={20} />
           </button>
