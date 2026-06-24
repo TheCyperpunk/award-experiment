@@ -189,43 +189,43 @@ const Features = () => (
         </BentoTilt>
 
         <BentoTilt className="bento-tilt_2">
-          <div className="flex size-full flex-col justify-between bg-gradient-to-br from-blue-600 to-blue-800 p-5 sm:p-6 md:p-8 relative overflow-hidden rounded-3xl">
+          <div className="flex size-full flex-col justify-between bg-gradient-to-br from-blue-600 to-blue-800 p-3 sm:p-6 md:p-8 relative overflow-hidden rounded-3xl">
             {/* Top section */}
             <div className="space-y-4">
               {/* Title and description */}
               <div>
-                <h1 className="font-zentry text-3xl sm:text-4xl md:text-5xl font-black text-white leading-[0.9] mb-3">
+                <h1 className="font-zentry text-2xl sm:text-4xl md:text-5xl font-black text-white leading-[0.9] mb-3">
                   Create<br />mini apps
                 </h1>
-                <p className="text-white/80 text-xs sm:text-sm mt-3 max-w-[220px]">
+                <p className="text-white/80 text-[10px] sm:text-sm mt-3 max-w-[220px]">
                   Bring your ideas to life by creating amazing mini apps (Comit) with us.
                 </p>
               </div>
 
               {/* Services list - positioned absolutely on desktop, below on mobile */}
-              <div className="flex flex-row flex-wrap gap-2 md:absolute md:top-5 md:right-5 md:flex-col md:items-end">
-                <span className="text-white/90 text-[10px] font-medium px-3 py-1.5 bg-white/15 rounded-full backdrop-blur-sm">
+              <div className="flex flex-row flex-wrap gap-1.5 md:absolute md:top-5 md:right-5 md:flex-col md:items-end">
+                <span className="text-white/90 text-[9px] sm:text-[10px] font-medium px-2 py-1 bg-white/15 rounded-full backdrop-blur-sm">
                   INSTANT DEPLOY
                 </span>
-                <span className="text-white/90 text-[10px] font-medium px-3 py-1.5 bg-white/15 rounded-full backdrop-blur-sm">
+                <span className="text-white/90 text-[9px] sm:text-[10px] font-medium px-2 py-1 bg-white/15 rounded-full backdrop-blur-sm">
                   UNIVERSAL ACCESS
                 </span>
-                <span className="text-white/90 text-[10px] font-medium px-3 py-1.5 bg-white/15 rounded-full backdrop-blur-sm">
+                <span className="text-white/90 text-[9px] sm:text-[10px] font-medium px-2 py-1 bg-white/15 rounded-full backdrop-blur-sm">
                   MINI DAPPS
                 </span>
               </div>
             </div>
 
             {/* Bottom contact section */}
-            <div className="bg-black/50 backdrop-blur-md rounded-3xl p-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-              <p className="text-white font-semibold text-xs sm:text-sm">
+            <div className="bg-black/50 backdrop-blur-md rounded-2xl p-2.5 flex flex-col gap-2 sm:p-4 sm:flex-row sm:items-center sm:justify-between">
+              <p className="text-white font-semibold text-[10px] sm:text-sm text-left">
                 Do you have any projects idea?
               </p>
-              <div className="flex items-center gap-1.5 bg-black/70 px-3 py-1.5 rounded-full w-fit">
-                <svg className="w-3.5 h-3.5 text-white flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="flex items-center justify-center gap-1.5 bg-black/70 px-2.5 py-1.5 rounded-full w-full sm:w-fit">
+                <svg className="w-3 h-3 text-white flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
-                <span className="text-white text-[10px] sm:text-[11px] whitespace-nowrap">contact@xmo.com</span>
+                <span className="text-white text-[9px] min-[320px]:text-[10px] sm:text-[11px] whitespace-nowrap">contact@xmo.com</span>
               </div>
             </div>
           </div>
