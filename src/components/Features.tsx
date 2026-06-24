@@ -49,9 +49,11 @@ export const BentoTilt = ({ children, className = "" }: BentoTiltProps) => {
 const LazyVideo = ({
   src,
   className,
+  containerClass = "absolute inset-0",
 }: {
   src: string;
   className: string;
+  containerClass?: string;
 }) => {
   const [activeSrc, setActiveSrc] = useState("");
   const containerRef = useRef<HTMLDivElement>(null);
@@ -79,7 +81,7 @@ const LazyVideo = ({
   }, [activeSrc]);
 
   return (
-    <div ref={containerRef} className="size-full">
+    <div ref={containerRef} className={containerClass}>
       <video
         ref={videoRef}
         src={activeSrc}
@@ -272,6 +274,7 @@ const Features = () => (
           <LazyVideo
             src="/videos/65b6-996f-4db7-b915-329c360cdfed.webm"
             className="size-full object-cover object-center"
+            containerClass="size-full"
           />
         </BentoTilt>
       </div>
