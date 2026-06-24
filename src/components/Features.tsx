@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { TiLocationArrow } from "react-icons/ti";
 
 interface BentoTiltProps {
@@ -45,6 +45,54 @@ export const BentoTilt = ({ children, className = "" }: BentoTiltProps) => {
   );
 };
 
+// Reusable lazy-loading video component
+const LazyVideo = ({
+  src,
+  className,
+}: {
+  src: string;
+  className: string;
+}) => {
+  const [activeSrc, setActiveSrc] = useState("");
+  const containerRef = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setActiveSrc(src);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "300px", threshold: 0.1 }
+    );
+    if (containerRef.current) observer.observe(containerRef.current);
+    return () => observer.disconnect();
+  }, [src]);
+
+  useEffect(() => {
+    if (activeSrc && videoRef.current) {
+      videoRef.current.load();
+      videoRef.current.play().catch(() => {});
+    }
+  }, [activeSrc]);
+
+  return (
+    <div ref={containerRef} className="size-full">
+      <video
+        ref={videoRef}
+        src={activeSrc}
+        loop
+        muted
+        playsInline
+        preload="none"
+        className={className}
+      />
+    </div>
+  );
+};
+
 interface BentoCardProps {
   src: string;
   title: React.ReactNode;
@@ -70,26 +118,12 @@ export const BentoCard = ({ src, title, description, isComingSoon }: BentoCardPr
   const handleMouseEnter = () => setHoverOpacity(1);
   const handleMouseLeave = () => setHoverOpacity(0);
 
-  // Check if the source is a GIF
-  const isGif = src?.toLowerCase().endsWith('.gif');
-
   return (
     <div className="relative size-full">
-      {isGif ? (
-        <img
-          src={src}
-          alt=""
-          className="absolute left-0 top-0 size-full object-cover object-center"
-        />
-      ) : (
-        <video
-          src={src}
-          loop
-          muted
-          autoPlay
-          className="absolute left-0 top-0 size-full object-cover object-center"
-        />
-      )}
+      <LazyVideo
+        src={src}
+        className="absolute left-0 top-0 size-full object-cover object-center"
+      />
       <div className="relative z-10 flex size-full flex-col justify-between p-5 text-blue-50">
         <div>
           <h1 className="bento-title special-font">{title}</h1>
@@ -137,7 +171,7 @@ const Features = () => (
 
       <BentoTilt className="border-hsla relative mb-7 h-96 w-full overflow-hidden rounded-3xl md:h-[65vh]">
         <BentoCard
-          src="/videos/9caf-506f-4de7-8a81-ab954be382a5.webm"
+          src="/videos/comit_480p.webm"
           title={
             <>
               com<b>i</b>t
@@ -151,7 +185,7 @@ const Features = () => (
       <div className="grid h-[135vh] w-full grid-cols-2 grid-rows-3 gap-7">
         <BentoTilt className="bento-tilt_1 row-span-1 md:col-span-1 md:row-span-2">
           <BentoCard
-            src="/videos/d787-a3b6-45ec-93b7-64b6ab7c615b.webm"
+            src="/videos/avatar_480p.webm"
             title={
               <>
                 virtu<b>a</b>l avatar
@@ -164,7 +198,7 @@ const Features = () => (
 
         <BentoTilt className="bento-tilt_1 row-span-1 ms-32 md:col-span-1 md:ms-0">
           <BentoCard
-            src="/videos/17c8-6d62-41e5-89b6-6d0ccd94218d.webm"
+            src="/videos/groups_480p.webm"
             title={
               <>
                 Layer<b>e</b>d groups
@@ -177,7 +211,7 @@ const Features = () => (
 
         <BentoTilt className="bento-tilt_1 me-14 md:col-span-1 md:me-0">
           <BentoCard
-            src="/videos/335899110423217.5fed436687231.gif"
+            src="/videos/channels_bg.webm"
             title={
               <>
                 ch<b>a</b>nnels
@@ -235,11 +269,8 @@ const Features = () => (
         </BentoTilt>
 
         <BentoTilt className="bento-tilt_2">
-          <video
+          <LazyVideo
             src="/videos/65b6-996f-4db7-b915-329c360cdfed.webm"
-            loop
-            muted
-            autoPlay
             className="size-full object-cover object-center"
           />
         </BentoTilt>

@@ -21,12 +21,12 @@ const Contact = () => {
       <div className="relative rounded-lg bg-black py-24 text-blue-50 sm:overflow-hidden">
         <div className="absolute -left-20 top-0 hidden h-full w-72 overflow-hidden sm:block lg:left-20 lg:w-96">
           <ImageClipBox
-            src="/img/Gemini_Generated_Image_y5npl3y5npl3y5np.png"
+            src="/img/contact_bg1.webp"
             clipClass="contact-clip-path-1"
             alt="XMO decentralized identity illustration"
           />
           <ImageClipBox
-            src="/img/original-c4424651b4293c8812e0ef7626bfb9f3.webp"
+            src="/img/contact_bg2.webp"
             clipClass="contact-clip-path-2 lg:translate-y-40 translate-y-60"
             alt="XMO secure messaging showcase"
           />

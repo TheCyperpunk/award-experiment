@@ -68,6 +68,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        {/* Preconnect + preload for hero video */}
+        <link rel="preconnect" href="https://d8j0ntlcm91z4.cloudfront.net" />
+        <link rel="dns-prefetch" href="https://d8j0ntlcm91z4.cloudfront.net" />
+        <link
+          rel="preload"
+          as="video"
+          href="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260328_105406_16f4600d-7a92-4292-b96e-b19156c7830a.mp4"
+          type="video/mp4"
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
