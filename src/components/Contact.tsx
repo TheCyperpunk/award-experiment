@@ -26,7 +26,7 @@ const Contact = () => {
             alt="XMO decentralized identity illustration"
           />
           <ImageClipBox
-            src="/img/contact_bg2.webp"
+            src="/img/original-c4424651b4293c8812e0ef7626bfb9f3.webp"
             clipClass="contact-clip-path-2 lg:translate-y-40 translate-y-60"
             alt="XMO secure messaging showcase"
           />
@@ -34,7 +34,7 @@ const Contact = () => {
 
         <div className="absolute -top-40 left-20 w-60 sm:top-1/2 md:left-auto md:right-10 lg:top-20 lg:w-80">
           <ImageClipBox
-            src="/img/Gemini_Generated_Image_nq3dsqnq3dsqnq3d.png"
+            src="/img/contact_bg2.webp"
             clipClass="sword-man-clip-path md:scale-125"
             alt="XMO Web3 platform hero visual"
           />
