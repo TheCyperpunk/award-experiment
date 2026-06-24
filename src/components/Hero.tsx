@@ -20,7 +20,7 @@ const Hero = () => {
 
   const handleTimeUpdate = (e: React.SyntheticEvent<HTMLVideoElement>) => {
     const video = e.currentTarget;
-    if (video.currentTime >= 8.8) {
+    if (video.currentTime >= 8.0) {
       video.currentTime = 0;
       video.play().catch(() => {});
     }
