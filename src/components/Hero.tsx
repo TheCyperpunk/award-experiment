@@ -83,7 +83,7 @@ const Hero = () => {
           muted
           playsInline
           className="absolute left-0 top-0 size-full object-cover object-center"
-          onLoadedData={handleVideoLoad}
+          onCanPlay={handleVideoLoad}
           onTimeUpdate={handleTimeUpdate}
         />
 
