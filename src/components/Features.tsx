@@ -217,18 +217,18 @@ const Features = () => (
             </div>
 
             {/* Bottom contact section */}
-            <div className="bg-black/50 backdrop-blur-md rounded-2xl p-2.5 flex flex-col gap-2 sm:p-4 sm:flex-row sm:items-center sm:justify-between">
+            <div className="bg-black/50 backdrop-blur-md rounded-2xl p-2 flex flex-col gap-2 sm:p-4 sm:flex-row sm:items-center sm:justify-between">
               <p className="text-white font-semibold text-[10px] sm:text-sm text-left">
                 Do you have any projects idea?
               </p>
               <a
                 href="mailto:xmomessenger@gmail.com"
-                className="flex items-center justify-center gap-1.5 bg-black/70 px-2.5 py-1.5 rounded-full w-full sm:w-fit hover:bg-black/90 transition-colors"
+                className="flex items-center justify-center gap-1 bg-black/70 px-2 py-1 rounded-full w-fit mx-auto sm:mx-0 sm:px-2.5 sm:py-1.5 hover:bg-black/90 transition-colors"
               >
                 <svg className="w-3 h-3 text-white flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
-                <span className="text-white text-[9px] min-[320px]:text-[10px] sm:text-[11px] whitespace-nowrap">xmomessenger@gmail.com</span>
+                <span className="text-white text-[8px] min-[320px]:text-[9px] sm:text-[11px] whitespace-nowrap">xmomessenger@gmail.com</span>
               </a>
             </div>
           </div>
