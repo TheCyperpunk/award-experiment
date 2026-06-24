@@ -173,7 +173,7 @@ const Features = () => (
 
       <BentoTilt className="border-hsla relative mb-7 h-96 w-full overflow-hidden rounded-3xl md:h-[65vh]">
         <BentoCard
-          src="/videos/comit_480p.webm"
+          src="https://res.cloudinary.com/zxgf3i2z/video/upload/v1782318676/original-ed9e329f7167698673aa3fe548026a8c_tvhxi1.mp4"
           title={
             <>
               com<b>i</b>t
@@ -187,7 +187,7 @@ const Features = () => (
       <div className="grid h-[135vh] w-full grid-cols-2 grid-rows-3 gap-7">
         <BentoTilt className="bento-tilt_1 row-span-1 md:col-span-1 md:row-span-2">
           <BentoCard
-            src="/videos/avatar_480p.webm"
+            src="https://res.cloudinary.com/zxgf3i2z/video/upload/v1782318587/VID-20231109-WA0019_niycqk.mp4"
             title={
               <>
                 virtu<b>a</b>l avatar
@@ -200,7 +200,7 @@ const Features = () => (
 
         <BentoTilt className="bento-tilt_1 row-span-1 ms-32 md:col-span-1 md:ms-0">
           <BentoCard
-            src="/videos/groups_480p.webm"
+            src="https://res.cloudinary.com/zxgf3i2z/video/upload/v1782318167/glass-abstract-vol2-dark-6_lyzt2l.mp4"
             title={
               <>
                 Layer<b>e</b>d groups
@@ -272,7 +272,7 @@ const Features = () => (
 
         <BentoTilt className="bento-tilt_2">
           <LazyVideo
-            src="/videos/65b6-996f-4db7-b915-329c360cdfed.webm"
+            src="https://res.cloudinary.com/zxgf3i2z/video/upload/v1782318551/original-e2ebe687b4273829513b018c41beb57a_qnrrsm.mp4"
             className="size-full object-cover object-center"
             containerClass="size-full"
           />
