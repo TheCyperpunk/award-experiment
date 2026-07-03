@@ -84,7 +84,7 @@ const LazyVideo = ({
     <div ref={containerRef} className={containerClass}>
       <video
         ref={videoRef}
-        src={activeSrc}
+        {...(activeSrc ? { src: activeSrc } : {})}
         loop
         muted
         playsInline
