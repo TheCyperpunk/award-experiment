@@ -76,7 +76,7 @@ const LazyVideo = ({
   useEffect(() => {
     if (activeSrc && videoRef.current) {
       videoRef.current.load();
-      videoRef.current.play().catch(() => {});
+      videoRef.current.play().catch(() => { });
     }
   }, [activeSrc]);
 
@@ -253,7 +253,7 @@ const Features = () => (
             </div>
 
             {/* Bottom contact section */}
-            <div className="bg-black/50 backdrop-blur-md rounded-2xl py-2.5 px-2 flex flex-col gap-2 sm:p-4 sm:flex-row sm:items-center sm:justify-between">
+            <div className="bg-black/50 backdrop-blur-md rounded-3xl py-2.5 px-2 flex flex-col gap-2 sm:p-4 sm:flex-row sm:items-center sm:justify-between">
               <p className="text-white font-semibold text-[9.5px] sm:text-sm text-left">
                 Do you have any projects idea?
               </p>
