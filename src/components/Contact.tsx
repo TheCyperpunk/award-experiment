@@ -10,8 +10,10 @@ interface ImageClipBoxProps {
 }
 
 const ImageClipBox = ({ src, clipClass, alt }: ImageClipBoxProps) => (
-  <div className={clipClass}>
-    <img src={src} alt={alt || "XMO platform feature"} />
+  <div style={{ filter: "url(#contact_round)" }}>
+    <div className={clipClass}>
+      <img src={src} alt={alt || "XMO platform feature"} />
+    </div>
   </div>
 );
 
@@ -55,6 +57,17 @@ const Contact = () => {
           </a>
         </div>
       </div>
+
+      {/* SVG filter for rounded clip-path corners */}
+      <svg className="invisible absolute size-0" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <filter id="contact_round">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="blur" />
+            <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="contact_round" />
+            <feComposite in="SourceGraphic" in2="contact_round" operator="atop" />
+          </filter>
+        </defs>
+      </svg>
     </div>
   );
 };
