@@ -29,7 +29,7 @@ const Contact = () => {
           />
           <ImageClipBox
             src="/img/original-c4424651b4293c8812e0ef7626bfb9f3.webp"
-            clipClass="contact-clip-path-2 lg:translate-y-40 translate-y-60"
+            clipClass="contact-clip-path-2 lg:translate-y-20 translate-y-20"
             alt="XMO secure messaging showcase"
           />
         </div>
