@@ -10,10 +10,8 @@ interface ImageClipBoxProps {
 }
 
 const ImageClipBox = ({ src, clipClass, alt }: ImageClipBoxProps) => (
-  <div style={{ filter: "url(#flt_tag)" }} className="w-full h-full">
-    <div className={clipClass}>
-      <img src={src} alt={alt || "XMO platform feature"} />
-    </div>
+  <div className={clipClass}>
+    <img src={src} alt={alt || "XMO platform feature"} />
   </div>
 );
 
@@ -21,7 +19,7 @@ const Contact = () => {
   return (
     <div id="contact" className="my-20 min-h-96 w-screen  px-10">
       <div className="relative rounded-lg bg-black py-24 text-blue-50 sm:overflow-hidden">
-        <div className="absolute -left-20 top-0 hidden h-full w-72 overflow-hidden sm:block lg:left-20 lg:w-96">
+        <div className="absolute -left-20 top-0 hidden h-full w-72 sm:block lg:left-20 lg:w-96">
           <ImageClipBox
             src="/img/contact_bg1.webp"
             clipClass="contact-clip-path-1"
@@ -57,33 +55,6 @@ const Contact = () => {
           </a>
         </div>
       </div>
-
-      {/* SVG filter definition for rounded clip-paths */}
-      <svg
-        className="invisible absolute size-0"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <defs>
-          <filter id="flt_tag">
-            <feGaussianBlur
-              in="SourceGraphic"
-              stdDeviation="8"
-              result="blur"
-            />
-            <feColorMatrix
-              in="blur"
-              mode="matrix"
-              values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9"
-              result="flt_tag"
-            />
-            <feComposite
-              in="SourceGraphic"
-              in2="flt_tag"
-              operator="atop"
-            />
-          </filter>
-        </defs>
-      </svg>
     </div>
   );
 };
