@@ -22,7 +22,7 @@ const Hero = () => {
     const video = e.currentTarget;
     if (video.currentTime >= 8.0) {
       video.currentTime = 0;
-      video.play().catch(() => {});
+      video.play().catch(() => { });
     }
   };
 
@@ -101,12 +101,17 @@ const Hero = () => {
               &quot;Reimagining Messaging in a Web3-Native World&quot; <br /> Your Digital Identity Is Yours Alone, Your Privacy End-to-End, and Every Connection Powered by True Decentralization.
             </p>
 
-            <Button
-              id="watch-trailer"
-              title="Download"
-              leftIcon={<TiLocationArrow />}
-              containerClass="!bg-[#5542ff] !text-white flex-center gap-1"
-            />
+            <a
+              href="https://xmoappreleases2026.blob.core.windows.net/app-releases/xmo-latest.apk"
+              download="xmo-latest.apk"
+            >
+              <Button
+                id="watch-trailer"
+                title="Download"
+                leftIcon={<TiLocationArrow />}
+                containerClass="!bg-[#5542ff] !text-white flex-center gap-1"
+              />
+            </a>
           </div>
         </div>
       </div>
