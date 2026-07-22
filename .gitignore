@@ -17,6 +17,7 @@
 
 # production
 /build
+/public/.well-known/assetlinks.json
 
 # misc
 .DS_Store
