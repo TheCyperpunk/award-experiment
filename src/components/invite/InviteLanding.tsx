@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { FiArrowUpRight, FiDownload, FiHash, FiUsers } from "react-icons/fi";
+import { MdCampaign, MdGroup } from "react-icons/md";
 
 const API_BASE = "https://xmo-matrix.centralindia.cloudapp.azure.com/auth/otp";
 const APK_URL =
@@ -14,6 +14,7 @@ type InvitePreview = {
   name: string;
   memberCount: number;
   topic?: string;
+  avatarUrl?: string;
 };
 
 type ViewState =
@@ -31,7 +32,9 @@ function parseInvite(value: unknown): InvitePreview | null {
 
   const candidate = value as Record<string, unknown>;
   if (candidate.type !== "group" && candidate.type !== "channel") return null;
-  if (candidate.joinMode !== "join" && candidate.joinMode !== "knock") return null;
+  if (candidate.joinMode !== "join" && candidate.joinMode !== "knock") {
+    return null;
+  }
 
   const name = typeof candidate.name === "string" ? candidate.name.trim() : "";
   if (!name) return null;
@@ -41,6 +44,8 @@ function parseInvite(value: unknown): InvitePreview | null {
     ? Math.max(0, Math.trunc(rawMemberCount))
     : 0;
   const topic = typeof candidate.topic === "string" ? candidate.topic.trim() : "";
+  const avatarUrl =
+    typeof candidate.avatarUrl === "string" ? candidate.avatarUrl.trim() : "";
 
   return {
     type: candidate.type,
@@ -48,6 +53,7 @@ function parseInvite(value: unknown): InvitePreview | null {
     name,
     memberCount,
     ...(topic ? { topic } : {}),
+    ...(avatarUrl ? { avatarUrl } : {}),
   };
 }
 
@@ -84,7 +90,7 @@ export default function InviteLanding() {
 
         document.title = `${invite.name} | XMO`;
         setView({ status: "ready", invite, token });
-      } catch (error) {
+      } catch {
         if (!controller.signal.aborted) setView({ status: "unavailable" });
       }
     }
@@ -108,24 +114,41 @@ export default function InviteLanding() {
 
 function InviteShell({ children }: { children: React.ReactNode }) {
   return (
-    <main className="min-h-dvh bg-[#090e12] px-5 py-8 text-white">
-      <div className="mx-auto flex min-h-[calc(100dvh-4rem)] w-full max-w-[430px] flex-col">
-        <a
-          href="/"
-          className="mx-auto flex items-center gap-3 text-xl font-bold tracking-[0.08em]"
-          aria-label="XMO home"
-        >
-          <img
-            src="/img/cropped_circle_image(1)(1).png"
-            alt=""
-            className="size-10 rounded-full object-cover"
-          />
-          XMO
-        </a>
-        <div className="flex flex-1 items-center justify-center py-10">{children}</div>
-        <p className="text-center text-xs text-white/40">
-          Only continue if you trust the person who shared this invite.
-        </p>
+    <main className="relative min-h-dvh overflow-hidden bg-[#080c0f] text-white">
+      <img
+        src="/img/xmo-chat-pattern.svg"
+        alt=""
+        className="pointer-events-none fixed inset-0 h-full w-full object-cover opacity-[0.065] invert"
+        aria-hidden="true"
+      />
+      <div className="relative z-10 min-h-dvh">
+        <header className="bg-[#161a1d]/95">
+          <div className="mx-auto flex h-16 w-full max-w-[720px] items-center justify-between px-5">
+            <a
+              href="/"
+              className="flex items-center gap-2.5 text-xl font-bold"
+              aria-label="XMO home"
+            >
+              <img
+                src="/img/cropped_circle_image(1)(1).png"
+                alt=""
+                className="size-10 rounded-full object-cover"
+              />
+              XMO
+            </a>
+            <a
+              href={APK_URL}
+              rel="noreferrer"
+              referrerPolicy="no-referrer"
+              className="inline-flex min-h-9 items-center rounded-full bg-[#98ed2f] px-5 text-sm font-bold text-[#0a0e10]"
+            >
+              Download
+            </a>
+          </div>
+        </header>
+        <div className="mx-auto flex min-h-[calc(100dvh-4rem)] w-full max-w-[720px] items-start px-4 py-5 sm:px-6 sm:py-6">
+          {children}
+        </div>
       </div>
     </main>
   );
@@ -134,7 +157,7 @@ function InviteShell({ children }: { children: React.ReactNode }) {
 function InviteStatus({ title, text }: { title?: string; text: string }) {
   return (
     <InviteShell>
-      <section className="w-full text-center" aria-live="polite">
+      <section className="my-auto w-full text-center" aria-live="polite">
         {title ? (
           <h1 className="text-2xl font-semibold">{title}</h1>
         ) : (
@@ -149,7 +172,7 @@ function InviteStatus({ title, text }: { title?: string; text: string }) {
         {title && (
           <a
             href="/"
-            className="mt-8 inline-flex min-h-12 items-center justify-center rounded-full bg-white px-8 font-semibold text-[#090e12]"
+            className="mt-8 inline-flex min-h-12 items-center justify-center rounded-lg bg-white px-8 font-semibold text-[#090e12]"
           >
             Go to XMO
           </a>
@@ -159,58 +182,80 @@ function InviteStatus({ title, text }: { title?: string; text: string }) {
   );
 }
 
+function InviteAvatar({
+  invite,
+  token,
+}: {
+  invite: InvitePreview;
+  token: string;
+}) {
+  const [failed, setFailed] = useState(false);
+  const TypeIcon = invite.type === "channel" ? MdCampaign : MdGroup;
+  const canLoadAvatar = Boolean(invite.avatarUrl) && !failed;
+
+  return (
+    <div className="relative mx-auto grid size-28 shrink-0 place-items-center overflow-hidden rounded-full bg-[#242a2f] text-[#98ed2f] sm:size-32">
+      {canLoadAvatar ? (
+        <img
+          src={`${API_BASE}/invites/${encodeURIComponent(token)}/avatar`}
+          alt={`${invite.name} profile`}
+          className="size-full object-cover"
+          referrerPolicy="no-referrer"
+          onError={() => setFailed(true)}
+        />
+      ) : (
+        <TypeIcon className="size-12" aria-hidden="true" />
+      )}
+    </div>
+  );
+}
+
 function InviteDetails({ invite, token }: { invite: InvitePreview; token: string }) {
   const typeLabel = invite.type === "channel" ? "Channel" : "Group";
-  const memberLabel = `${invite.memberCount} ${invite.memberCount === 1 ? "member" : "members"}`;
+  const memberLabel = `${invite.memberCount} ${
+    invite.type === "channel"
+      ? invite.memberCount === 1
+        ? "subscriber"
+        : "subscribers"
+      : invite.memberCount === 1
+        ? "member"
+        : "members"
+  }`;
   const openUrl = useMemo(() => `xmo://join/${encodeURIComponent(token)}`, [token]);
-  const TypeIcon = invite.type === "channel" ? FiHash : FiUsers;
 
   return (
     <InviteShell>
-      <section className="w-full text-center">
-        <div className="mx-auto grid size-24 place-items-center rounded-full bg-[#20262c] text-[#98ed2f]">
-          <TypeIcon className="size-10" aria-hidden="true" />
+      <section className="mx-auto w-full max-w-[530px] rounded-3xl bg-[#242a2f] px-6 py-9 text-center shadow-2xl shadow-black/35 sm:px-10 sm:py-11">
+        <div>
+          <InviteAvatar invite={invite} token={token} />
+          <h1 className="mt-6 text-3xl font-bold leading-tight [overflow-wrap:anywhere] sm:text-4xl">
+            {invite.name}
+          </h1>
+          <p className="mt-2 text-base text-white/50">
+            {typeLabel} <span className="px-1 text-white/25">·</span>{" "}
+            {memberLabel}
+          </p>
         </div>
 
-        <p className="mt-6 text-xs font-semibold uppercase tracking-[0.16em] text-[#98ed2f]">
-          XMO {typeLabel} invite
-        </p>
-        <h1 className="mt-2 text-3xl font-semibold leading-tight [overflow-wrap:anywhere]">
-          {invite.name}
-        </h1>
-        <p className="mt-2 text-[15px] text-white/55">{memberLabel}</p>
-
         {invite.topic && (
-          <p className="mx-auto mt-5 max-w-[36ch] text-[15px] leading-6 text-white/75">
+          <p className="mx-auto mt-6 max-w-[410px] whitespace-pre-line text-base leading-7 text-white/85">
             {invite.topic}
           </p>
         )}
 
-        <p className="mx-auto mt-6 max-w-[36ch] rounded-lg bg-[#12181d] px-4 py-3 text-sm leading-5 text-white/60">
-          {invite.joinMode === "knock"
-            ? `Open XMO to review this ${typeLabel.toLowerCase()} and request to join.`
-            : `Open XMO to review and join this ${typeLabel.toLowerCase()}.`}
-        </p>
+        <a
+          href={openUrl}
+          rel="noreferrer"
+          className="mx-auto mt-8 flex min-h-11 w-full max-w-[220px] items-center justify-center rounded-full bg-[#98ed2f] px-6 text-base font-bold text-[#090e12]"
+        >
+          View in XMO
+        </a>
 
-        <div className="mt-7 grid gap-3">
-          <a
-            href={openUrl}
-            rel="noreferrer"
-            className="flex min-h-[52px] items-center justify-center gap-2 rounded-full bg-white px-6 font-semibold text-[#090e12]"
-          >
-            Open XMO
-            <FiArrowUpRight className="size-5" aria-hidden="true" />
-          </a>
-          <a
-            href={APK_URL}
-            rel="noreferrer"
-            referrerPolicy="no-referrer"
-            className="flex min-h-[52px] items-center justify-center gap-2 rounded-full bg-[#252b31] px-6 font-semibold text-white"
-          >
-            <FiDownload className="size-5" aria-hidden="true" />
-            Download XMO
-          </a>
-        </div>
+        <p className="mx-auto mt-6 max-w-[390px] text-sm leading-6 text-white/45">
+          {invite.joinMode === "knock"
+            ? `An admin will review your request before you can join this ${typeLabel.toLowerCase()}.`
+            : `If you have XMO, you can open and join ${invite.name} right away.`}
+        </p>
       </section>
     </InviteShell>
   );
