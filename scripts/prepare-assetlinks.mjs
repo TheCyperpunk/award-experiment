@@ -2,14 +2,16 @@ import { mkdir, rm, writeFile } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
 
 const packageName = "com.xmo.xmo";
-const fingerprint = (process.env.XMO_ANDROID_APP_SIGNING_SHA256 ?? "")
+const primaryFingerprint = (process.env.XMO_ANDROID_APP_SIGNING_SHA256 ?? "")
   .trim()
   .toUpperCase();
+const debugFingerprint =
+  "07:5E:98:55:4B:3F:80:A0:CA:AC:1D:FE:A1:85:43:2E:62:6C:B7:08:7E:44:01:50:B5:9D:50:AB:CF:61:15:47";
 const outputPath = resolve("public/.well-known/assetlinks.json");
 const fingerprintPattern = /^(?:[0-9A-F]{2}:){31}[0-9A-F]{2}$/;
 const isNetlifyBuild = process.env.NETLIFY === "true";
 
-if (!fingerprint) {
+if (!primaryFingerprint) {
   await rm(outputPath, { force: true });
   if (isNetlifyBuild) {
     throw new Error(
@@ -22,7 +24,11 @@ if (!fingerprint) {
   process.exit(0);
 }
 
-if (!fingerprintPattern.test(fingerprint)) {
+const fingerprints = Array.from(new Set([primaryFingerprint, debugFingerprint]));
+const invalidFingerprint = fingerprints.find(
+  (candidate) => !fingerprintPattern.test(candidate),
+);
+if (invalidFingerprint != null) {
   throw new Error(
     "XMO_ANDROID_APP_SIGNING_SHA256 must be a colon-separated SHA-256 fingerprint.",
   );
@@ -34,7 +40,7 @@ const assetLinks = [
     target: {
       namespace: "android_app",
       package_name: packageName,
-      sha256_cert_fingerprints: [fingerprint],
+      sha256_cert_fingerprints: fingerprints,
     },
   },
 ];
