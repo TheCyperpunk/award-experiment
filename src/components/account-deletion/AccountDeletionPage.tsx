@@ -8,9 +8,29 @@ const API_BASE =
 
 type Stage = "request" | "confirm" | "deleted";
 type Notice = { kind: "info" | "error"; text: string } | null;
+const COMPLETION_ORIGIN = "https://xmo.dpdns.org";
+const COMPLETION_PATH = "/account/deleted";
 
 function normalizeUsername(value: string) {
   return value.trim().replace(/^@/, "");
+}
+
+function deletionCompletionUrl(payload: Record<string, unknown> | null) {
+  if (typeof payload?.return_url !== "string") return null;
+  try {
+    const url = new URL(payload.return_url);
+    if (
+      url.origin !== COMPLETION_ORIGIN ||
+      url.pathname !== COMPLETION_PATH ||
+      url.searchParams.get("xmo_action") !== "account_deleted" ||
+      !url.searchParams.get("user_id")
+    ) {
+      return null;
+    }
+    return url.toString();
+  } catch {
+    return null;
+  }
 }
 
 async function post(path: string, body: Record<string, string>) {
@@ -46,6 +66,7 @@ export default function AccountDeletionPage() {
   const [code, setCode] = useState("");
   const [busy, setBusy] = useState(false);
   const [notice, setNotice] = useState<Notice>(null);
+  const [completionUrl, setCompletionUrl] = useState<string | null>(null);
 
   const requestCode = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -82,13 +103,18 @@ export default function AccountDeletionPage() {
     setBusy(true);
     setNotice(null);
     try {
-      await post("confirm", {
+      const payload = await post("confirm", {
         username: normalizeUsername(username),
         email: email.trim(),
         otp: code.trim(),
       });
+      const returnUrl = deletionCompletionUrl(payload);
+      setCompletionUrl(returnUrl);
       setStage("deleted");
       setNotice(null);
+      if (returnUrl && /Android/i.test(navigator.userAgent)) {
+        window.setTimeout(() => window.location.assign(returnUrl), 700);
+      }
     } catch (error) {
       setNotice({
         kind: "error",
@@ -117,7 +143,7 @@ export default function AccountDeletionPage() {
 
         <section className="my-auto py-10">
           {stage === "deleted" ? (
-            <DeletedState />
+            <DeletedState completionUrl={completionUrl} />
           ) : (
             <>
               <div className="text-center">
@@ -294,7 +320,7 @@ function PrimaryButton({ busy, children }: { busy: boolean; children: React.Reac
   );
 }
 
-function DeletedState() {
+function DeletedState({ completionUrl }: { completionUrl: string | null }) {
   return (
     <div className="text-center" role="status">
       <div className="mx-auto grid size-20 place-items-center rounded-full bg-[#172216] text-[#98ed2f]">
@@ -305,10 +331,10 @@ function DeletedState() {
         Your XMO account has been deactivated and associated XMO service records were removed where supported.
       </p>
       <a
-        href="/"
+        href={completionUrl ?? "/"}
         className="mt-8 inline-flex min-h-[52px] items-center justify-center rounded-full bg-white px-8 font-semibold text-[#090e12]"
       >
-        Return to XMO
+        {completionUrl ? "Return to XMO app" : "Return to XMO"}
       </a>
     </div>
   );
