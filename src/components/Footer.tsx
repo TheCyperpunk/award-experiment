@@ -1,11 +1,11 @@
 import Link from "next/link";
-import { FaDiscord, FaTwitter, FaYoutube, FaMedium } from "react-icons/fa";
+import { FaInstagram, FaTwitter, FaYoutube, FaMedium } from "react-icons/fa";
 
 const socialLinks = [
-  { href: "https://discord.com", icon: <FaDiscord /> },
-  { href: "https://twitter.com", icon: <FaTwitter /> },
-  { href: "https://youtube.com", icon: <FaYoutube /> },
-  { href: "https://medium.com", icon: <FaMedium /> },
+  { href: "https://www.instagram.com/xmomessanger?igsh=MTV2MmJ3YWI1YmptNg==", icon: <FaInstagram /> },
+  { href: "https://x.com/xmomessenger?s=11", icon: <FaTwitter /> },
+  { href: "https://youtube.com/@xmomessenger?si=zYJ9yrn6JzGE7KPA", icon: <FaYoutube /> },
+  { href: "https://medium.com/@amrid11dineshan", icon: <FaMedium /> },
 ];
 
 const Footer = () => {
