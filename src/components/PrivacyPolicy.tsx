@@ -50,7 +50,7 @@ const PrivacyPolicy = () => {
         <div className="flex-shrink-0 flex items-center justify-between bg-[#0d0d1a]/95 px-8 py-5 backdrop-blur-sm border-b border-white/5">
           <div>
             <h1 className="text-xl font-bold text-white">XMO Privacy Policy</h1>
-            <p className="text-xs text-gray-400 mt-0.5">Effective date: June 5, 2026</p>
+            <p className="text-xs text-gray-400 mt-0.5">Effective date: August 26, 2026</p>
           </div>
           <button onClick={() => router.back()} id="close-privacy-policy" aria-label="Close Privacy Policy"
             className="flex h-9 w-9 items-center justify-center rounded-full bg-white/5 text-gray-400 transition-all duration-200 hover:bg-[#5542ff]/30 hover:text-white">
@@ -61,32 +61,32 @@ const PrivacyPolicy = () => {
         {/* Content */}
         <div className="policy-scroll flex-1 overflow-y-auto px-8 md:px-16 lg:px-32 xl:px-48 py-8 text-sm text-gray-300 leading-relaxed space-y-4">
 
-          <p>This Privacy Policy explains how XMO collects, uses, stores, shares, and protects information when you use the XMO mobile app, web app, Matrix homeserver, authentication services, calling features, story features, wallet login, and donation features.</p>
-          <p>XMO is a Matrix-based messaging application. Some parts of the service are provided by XMO-operated infrastructure, such as the XMO Matrix homeserver and OTP backend. Some parts rely on third-party services, such as Matrix protocol infrastructure, email delivery, wallet providers, WalletConnect/Reown, Thirdweb, Firebase initialization services, and blockchain networks.</p>
+          <p>This Privacy Policy explains how XMO collects, uses, stores, shares, and protects information when you use the XMO mobile app, web app, Matrix homeserver, authentication services, calling features, story features, wallet accounts, and donation features.</p>
+          <p>XMO is a Matrix-based messaging application. Some parts of the service are provided by XMO-operated infrastructure, such as the XMO Matrix homeserver and authentication backend. Some parts rely on third-party services, such as Matrix protocol infrastructure, email delivery, wallet providers, WalletConnect/Reown, Thirdweb, Firebase services, and blockchain networks.</p>
           <p className="text-[#a89bff] font-medium">If you do not agree with this Privacy Policy, do not use XMO.</p>
           <p>This policy is written to describe how XMO works from a privacy perspective. It does not replace any terms of service, community rules, blockchain wallet rules, Matrix homeserver rules, or third-party provider policies that may also apply to your use of the app.</p>
 
           <Section title="Summary">
             <p>XMO is designed as a private messaging and calling app built on Matrix, with a long-term direction toward end-to-end encrypted communication, decentralized ownership, and stronger user control over data. Your account, rooms, messages, media, groups, channels, and stories are processed through Matrix-compatible infrastructure. When you send something to another person or room, that content has to be delivered to the relevant recipients and may be stored on the homeserver so those recipients can access it.</p>
             <p>XMO also stores some information locally on your device to make the app work smoothly. This includes login/session state, settings, cached media previews, downloaded files, local call history, and temporary upload state. Local information helps the app show chats faster, remember your choices, and support features such as storage usage, shared media, pending uploads, and call history.</p>
-            <p>Some features use separate services. Email verification uses an OTP backend. Wallet login uses wallet connection and message signing. Donations use Thirdweb checkout and public blockchain networks. These services process the information needed for their specific feature.</p>
+            <p>Some features use separate services. Normal XMO accounts use email verification and Authentik-backed sign-in, with optional authenticator verification. Wallet-only accounts use wallet connection and message signing as a separate sign-in method and do not require an email, phone number, password, or Authentik account. Donations use Thirdweb checkout and public blockchain networks. These services process the information needed for their specific feature.</p>
             <p>Our future privacy direction is to make XMO more secure by reducing unnecessary data collection, keeping sensitive credentials out of the mobile app, improving encrypted messaging support, strengthening account and session protection, and using decentralized or federated architecture where it gives users more control and resilience. We will continue to describe important privacy limits clearly, because even secure systems may still process metadata, local cache, recipient copies, server routing information, or blockchain transaction records.</p>
           </Section>
 
           <Section title="Who This Policy Applies To">
-            <p>This policy applies to people who install, access, register for, log in to, or otherwise use XMO. It also applies when you interact with an XMO user, group, channel, story, call, invite link, shared media item, wallet login flow, or donation checkout flow.</p>
+            <p>This policy applies to people who install, access, register for, sign in to, or otherwise use XMO. It also applies when you interact with an XMO user, group, channel, story, call, invite link, shared media item, wallet-account flow, or donation checkout flow.</p>
             <p>If you use XMO through a Matrix account hosted on a different homeserver, that homeserver may have its own privacy policy. If federation is enabled, your information may be processed by both XMO-operated services and other Matrix servers involved in the rooms you join.</p>
           </Section>
 
           <Section title="XMO Architecture From a Privacy Perspective">
-            <p>XMO has several major privacy-relevant parts. The Flutter app runs on your device and provides the user interface for chats, calls, media, stories, settings, wallet login, and donations. The Matrix homeserver stores and synchronizes account data, rooms, messages, media, profiles, group/channel state, read receipts, and other Matrix events. The OTP backend sends and verifies email codes during registration or verification flows. Wallet login uses wallet connection infrastructure and a wallet signature to prove wallet ownership. Donations use the XMO donation backend and Thirdweb to create a checkout link.</p>
+            <p>XMO has several major privacy-relevant parts. The Flutter app runs on your device and provides the user interface for chats, calls, media, stories, settings, wallet accounts, and donations. The Matrix homeserver stores and synchronizes account data, rooms, messages, media, profiles, group/channel state, read receipts, and other Matrix events. Normal accounts use the XMO authentication backend and Authentik for credential and optional authenticator verification before a Matrix session is issued. Wallet-only accounts use a separate wallet-authentication service that verifies a short-lived wallet signature before issuing a Matrix session. Donations use the XMO donation backend and Thirdweb to create a checkout link.</p>
             <p>This means not every piece of data is handled in the same place. Chat messages and media are Matrix data. OTP codes are temporary backend data. Downloaded files and cache are local device data. Wallet addresses and blockchain transactions are wallet/blockchain data. Understanding this separation is important because deleting or changing one type of data may not automatically delete or change all other related copies.</p>
             <p>XMO&apos;s architecture is intended to avoid a fully centralized model where one app server controls every user interaction. Matrix allows homeservers to interoperate, which can support a more decentralized communication model when federation is enabled. In that model, users may communicate across different homeservers instead of depending only on one central service. Decentralization can improve portability and resilience, but it also means that data may be processed by more than one server, and each independent server may apply its own retention, moderation, and security practices.</p>
           </Section>
 
           <Section title="1. Information We Collect">
             <Sub title="1.1 Account Information" />
-            <p>When you create or use an XMO account, we may collect your username and Matrix user ID, display name and profile photo or avatar, email address (if you register with email verification), phone number (if provided), wallet address and signed authentication message (if you use wallet login), and profile settings, privacy settings, account visibility preferences, and related account configuration.</p>
+            <p>When you create or use an XMO account, we may collect your username and Matrix user ID, display name and profile photo or avatar, email address and phone number for a normal account where provided, or wallet address and signed authentication message for a wallet-only account. We may also process profile settings, privacy settings, account visibility preferences, and related account configuration.</p>
             <p>Your account information may be visible to other users depending on how you use the app and how your privacy settings are configured. For example, your display name and profile photo may appear in direct chats, groups, channels, stories, call screens, member lists, search results, and invite-related screens.</p>
 
             <Sub title="1.2 Messages, Rooms, Groups, Channels, and Stories" />
@@ -103,7 +103,7 @@ const PrivacyPolicy = () => {
             <p>XMO may process technical information about your device and app environment, such as device type, operating system, app version, platform information, IP address, and network request metadata when you connect to XMO services. The app also processes local settings and app state, including notification preferences, media auto-download preferences, privacy preferences, story visibility settings, blocked users, local cache data, downloaded media records, shared media indexes, and storage usage information.</p>
 
             <Sub title="1.5 Wallet and Donation Information" />
-            <p>If you use wallet login or crypto donations, XMO processes your wallet address and the wallet signature used to authenticate your account. The signature is used to prove control of the wallet address; it does not give XMO access to your private key.</p>
+            <p>If you create or use a wallet-only account, XMO processes your wallet address, the selected username, and the wallet signature used to authenticate the account. A wallet-only account is separate from a normal email/password account and does not use Authentik credentials. The signature proves control of the wallet address; it does not give XMO access to your private key.</p>
             <p>If you donate through the crypto donation feature, XMO processes the donation amount you enter and the checkout link information returned by Thirdweb. The resulting blockchain transaction information may be public on the relevant blockchain, including wallet addresses, transaction identifiers, token information, network information, and transaction amounts.</p>
             <p className="text-[#a89bff] font-medium">XMO does not ask for or store your wallet private key or seed phrase. Never share your wallet private key or seed phrase with anyone.</p>
 
@@ -151,12 +151,13 @@ const PrivacyPolicy = () => {
           </Section>
 
           <Section title="7. Email OTP Verification">
-            <p>XMO uses an OTP backend to send verification codes by email. When you request verification, the backend receives the email address you submit, generates a six-digit OTP, stores that OTP temporarily in memory, limits verification attempts, and sends the OTP using configured email delivery credentials. OTP records are temporary and are removed after expiry, successful verification, or excessive failed attempts.</p>
+            <p>XMO uses an OTP backend to send verification codes by email. When you request verification, the backend receives the email address you submit, generates a six-digit OTP, stores a protected verification record for the required flow, limits verification attempts, and sends the OTP using configured email delivery credentials. Verification records are temporary, single-use, and removed or invalidated after expiry, successful verification, or excessive failed attempts.</p>
           </Section>
 
-          <Section title="8. Wallet Login">
-            <p>If you choose wallet login, you enter or choose a username and connect a wallet. XMO asks your wallet to sign an authentication message. The signed message proves that you control the wallet address and allows XMO to register or authenticate your Matrix account for the selected username. This signature process does not require a blockchain transaction for login and does not give XMO access to your wallet private key.</p>
-            <p>You should always review wallet prompts before signing and make sure the prompt is for XMO and not for an unknown website or malicious app.</p>
+          <Section title="8. Wallet-Only Accounts">
+            <p>If you choose the wallet account path, you connect a supported wallet, choose an available username, and approve a message-signing request. The signed message proves that you control the wallet address and allows XMO to create or authenticate the separate wallet-only account. This process does not require an email address, phone number, password, Authentik account, or blockchain transaction.</p>
+            <p>XMO uses a short-lived challenge for wallet authentication. XMO does not receive or store your private key or recovery phrase. Your wallet address, username, authentication records, and relevant technical metadata may be stored to operate the account.</p>
+            <p>Your wallet is the credential for a wallet-only account. If you permanently lose access to that wallet, XMO may not be able to recover the account or its encrypted history. You should always review wallet prompts before signing and make sure the prompt is for XMO and not for an unknown website or malicious app.</p>
           </Section>
 
           <Section title="9. Donations">
@@ -165,13 +166,13 @@ const PrivacyPolicy = () => {
           </Section>
 
           <Section title="10. Third-Party Services">
-            <p>XMO may rely on or interact with: Matrix/Synapse homeserver services, email delivery services for OTP codes, Firebase initialization services, wallet providers (MetaMask, Coinbase Wallet, Rainbow, or other WalletConnect-compatible wallets), WalletConnect/Reown wallet connection infrastructure, Thirdweb for donation checkout links, and blockchain networks for public crypto transactions.</p>
+            <p>XMO may rely on or interact with: Matrix/Synapse homeserver services, Authentik for normal-account sign-in and optional authenticator verification, email delivery services for OTP codes, Firebase services, wallet providers such as MetaMask, Trust Wallet, Rabby, Coinbase Wallet, Rainbow, or other Reown-compatible wallets, WalletConnect/Reown wallet connection infrastructure, Thirdweb for donation checkout links, and blockchain networks for public crypto transactions.</p>
             <p>Third-party services are independent from XMO. Their privacy practices, security practices, data retention, international transfers, user rights processes, and support channels may differ from ours. XMO is not responsible for the privacy practices of third-party websites, wallets, networks, or services.</p>
           </Section>
 
           <Section title="11. How We Share Information">
             <p>We share or disclose information when necessary to operate XMO — for example, message content, media, room state, profile data, call signaling, and account data may be shared through Matrix infrastructure so that recipients, group members, channel subscribers, and authorized story viewers can receive and view the content.</p>
-            <p>We may share email addresses with email delivery systems needed to send OTP codes. Wallet login and donation information may be shared with wallet providers, WalletConnect/Reown infrastructure, Thirdweb, and blockchain networks. We may also disclose information to comply with law, respond to legal process, enforce our rights, maintain service security, or protect XMO, users, and the public from spam, abuse, fraud, or harm.</p>
+            <p>We may share email addresses with email delivery systems needed to send OTP codes. Normal-account authentication data may be processed by Authentik. Wallet authentication and donation information may be shared with wallet providers, WalletConnect/Reown infrastructure, Thirdweb, and blockchain networks. We may also disclose information to comply with law, respond to legal process, enforce our rights, maintain service security, or protect XMO, users, and the public from spam, abuse, fraud, or harm.</p>
             <p className="text-[#a89bff] font-medium">We do not sell your personal information.</p>
           </Section>
 
@@ -191,7 +192,7 @@ const PrivacyPolicy = () => {
 
           <Section title="14. Data Retention">
             <p>We retain information for as long as needed to provide XMO, comply with legal obligations, resolve disputes, enforce agreements, and maintain security. Matrix messages, media, rooms, groups, channels, stories, and profile data may remain on the homeserver until they are deleted, redacted, expired, or removed according to server configuration and Matrix behavior.</p>
-            <p>OTP records are temporary and expire quickly. Local cache and downloaded files remain on your device until you clear them, delete them, or uninstall the app. Blockchain transaction data may remain publicly available indefinitely because public blockchains are designed to preserve transaction records.</p>
+            <p>OTP, password-reset, and wallet-authentication challenges are temporary, single-use records with limited retention. Local cache and downloaded files remain on your device until you clear them, delete them, or uninstall the app. Blockchain transaction data may remain publicly available indefinitely because public blockchains are designed to preserve transaction records.</p>
           </Section>
 
           <Section title="15. International Transfers">
@@ -214,10 +215,6 @@ const PrivacyPolicy = () => {
           <Section title="19. Contact">
             <p>For privacy questions or requests, contact:</p>
             <p><code>xmoapp@proton.me</code></p>
-          </Section>
-
-          <Section title="20. Reference Policies Reviewed">
-            <p>This policy was prepared after reviewing privacy-policy structures and coverage patterns from major messaging platforms, including Telegram, WhatsApp, and WeChat, and then tailoring the content to XMO&apos;s actual Matrix-based codebase and features.</p>
           </Section>
 
         </div>

@@ -41,7 +41,7 @@ const TermsOfService = () => {
         <div className="flex-shrink-0 flex items-center justify-between bg-[#0d0d1a]/95 px-8 py-5 backdrop-blur-sm border-b border-white/5">
           <div>
             <h1 className="text-xl font-bold text-white">XMO Terms of Service</h1>
-            <p className="text-xs text-gray-400 mt-0.5">Effective date: June 5, 2026</p>
+            <p className="text-xs text-gray-400 mt-0.5">Effective date: August 26, 2026</p>
           </div>
           <button onClick={() => router.back()} id="close-terms-of-service" aria-label="Close Terms of Service"
             className="flex h-9 w-9 items-center justify-center rounded-full bg-white/5 text-gray-400 transition-all duration-200 hover:bg-[#5542ff]/30 hover:text-white">
@@ -67,8 +67,8 @@ const TermsOfService = () => {
           </Section>
 
           <Section title="3. Your Account">
-            <p>You may create or access an XMO account using supported sign-in methods, including username and password registration, email verification, wallet login, or other authentication methods that XMO may support in the future.</p>
-            <p>You are responsible for the accuracy of the information you provide during registration and login. You are also responsible for keeping your password, device, wallet, private keys, recovery phrases, OTP codes, and active sessions secure. If someone accesses your account because you shared credentials, lost control of your device, approved a malicious wallet prompt, or failed to secure your account, you are responsible for activity that occurs through that account unless applicable law says otherwise.</p>
+            <p>XMO has two separate account paths. A normal account uses username registration, email verification, and Authentik-backed sign-in with an optional authenticator step. A wallet-only account uses a connected wallet, an available username, and a signed ownership message. A wallet-only account does not require an email address, phone number, password, or Authentik account.</p>
+            <p>You are responsible for the accuracy of the information you provide during registration and login. You are also responsible for keeping your password, device, wallet, private keys, recovery phrases, OTP codes, and active sessions secure. For a wallet-only account, the connected wallet is the account credential. If someone accesses your account because you shared credentials, lost control of your device, approved a malicious wallet prompt, or failed to secure your account, you are responsible for activity that occurs through that account unless applicable law says otherwise.</p>
             <p>You must not create accounts using automated methods, fake identities for abuse, stolen credentials, unauthorized wallet addresses, or misleading information intended to impersonate another person, brand, group, channel, organization, or public figure.</p>
             <p>If you believe your account, email, wallet, or device has been compromised, you should secure it immediately and contact us if the issue affects XMO-specific services.</p>
           </Section>
@@ -79,7 +79,7 @@ const TermsOfService = () => {
           </Section>
 
           <Section title="5. XMO Services">
-            <p>XMO provides messaging, media sharing, voice and video calls, stories, groups, channels, shared media, file downloads, search, privacy settings, storage management, wallet login, and donation features. These features may change over time as the app develops.</p>
+            <p>XMO provides messaging, media sharing, voice and video calls, stories, groups, channels, shared media, file downloads, search, privacy settings, storage management, wallet accounts, and donation features. These features may change over time as the app develops.</p>
             <p>XMO is built on Matrix. Matrix rooms, messages, media, reactions, read receipts, membership state, profile state, and other events may be stored and synchronized through a Matrix homeserver. Some rooms may be direct chats, some may be groups, and some may be channels. Channels may be broadcast-oriented and may allow only admins or authorized roles to post.</p>
             <p>XMO may also provide optional features such as wallet-based authentication, crypto donation checkout, local call history, local cached media previews, downloaded storage, and app-specific UI controls. These features may depend on additional third-party services and may not be available in all regions, devices, or network conditions.</p>
           </Section>
@@ -126,9 +126,10 @@ const TermsOfService = () => {
             <p>XMO may limit, remove, suspend, or disable groups, channels, invite links, public visibility, search visibility, or admin features if we believe they violate these Terms, create legal risk, or harm XMO, users, or third parties.</p>
           </Section>
 
-          <Section title="13. Wallet Login">
-            <p>XMO may allow you to connect a crypto wallet and sign a message to prove wallet ownership. Wallet login does not require you to share your private key with XMO, and you should never share your private key or recovery phrase with anyone.</p>
-            <p>Wallet login may involve wallet providers, browser wallet extensions, WalletConnect/Reown infrastructure, blockchain libraries, device deep links, and other third-party systems. XMO is not responsible for wallet provider outages, failed signatures, wallet compatibility issues, lost keys, stolen wallets, malicious wallet prompts, or transactions you approve outside XMO.</p>
+          <Section title="13. Wallet-Only Accounts">
+            <p>XMO may allow you to create or access a separate wallet-only account by connecting a supported crypto wallet, choosing an available username, and signing an ownership message. The signed message proves wallet control. It does not require an email address, phone number, password, Authentik account, or blockchain transaction.</p>
+            <p>XMO does not receive or store your private key or recovery phrase. Your wallet-only account is tied to the wallet used to create it. If you lose permanent access to that wallet, XMO may not be able to recover the account or its encrypted history unless a separate recovery feature is explicitly provided.</p>
+            <p>Wallet authentication may involve wallet providers, browser wallet extensions, WalletConnect/Reown infrastructure, blockchain libraries, device deep links, and other third-party systems. XMO is not responsible for wallet provider outages, failed signatures, wallet compatibility issues, lost keys, stolen wallets, malicious wallet prompts, or transactions you approve outside XMO.</p>
             <p>You are responsible for verifying what your wallet asks you to sign. If you do not understand a wallet prompt, you should not approve it.</p>
           </Section>
 
@@ -182,7 +183,7 @@ const TermsOfService = () => {
           </Section>
 
           <Section title="21. Service Availability and Changes">
-            <p>XMO is evolving. We may add, change, limit, suspend, or remove features, including messaging behavior, media upload limits, calling behavior, story behavior, group and channel tools, wallet login, donations, storage tools, shared media, search, settings, or supported platforms.</p>
+            <p>XMO is evolving. We may add, change, limit, suspend, or remove features, including messaging behavior, media upload limits, calling behavior, story behavior, group and channel tools, wallet accounts, donations, storage tools, shared media, search, settings, or supported platforms.</p>
             <p>We do not guarantee that XMO will always be available, uninterrupted, secure, error-free, compatible with every device, compatible with every Matrix server, compatible with every wallet, or free from delay, data loss, upload failure, call failure, media playback failure, or synchronization issues.</p>
             <p>Service interruptions may occur because of maintenance, upgrades, server outages, network issues, Matrix federation issues, WebRTC issues, third-party service failures, blockchain congestion, app store changes, operating system changes, legal requirements, security events, or circumstances outside our control.</p>
           </Section>
@@ -194,7 +195,7 @@ const TermsOfService = () => {
 
           <Section title="23. Disclaimers">
             <p>XMO is provided on an &quot;as is&quot; and &quot;as available&quot; basis. To the maximum extent permitted by law, we disclaim warranties of merchantability, fitness for a particular purpose, title, non-infringement, uninterrupted operation, accuracy, security, availability, and error-free performance.</p>
-            <p>We do not guarantee that messages will always be delivered, media will always upload, calls will always connect, shared media will always index every historical item, wallet login will always succeed, donation checkout will always be available, links will be safe, files will be harmless, or user content will be accurate.</p>
+            <p>We do not guarantee that messages will always be delivered, media will always upload, calls will always connect, shared media will always index every historical item, wallet authentication will always succeed, donation checkout will always be available, links will be safe, files will be harmless, or user content will be accurate.</p>
             <p>We do not control what users say, send, upload, post, forward, download, record, screenshot, or do through XMO. You are responsible for your interactions with other users and for your own decisions when opening files, clicking links, joining groups, joining channels, connecting wallets, or approving transactions.</p>
           </Section>
 
@@ -209,7 +210,7 @@ const TermsOfService = () => {
 
           <Section title="26. Legal Compliance">
             <p>You are responsible for complying with laws that apply to you. You must not use XMO in a country, region, or situation where using the service is illegal. You must not use XMO to violate sanctions, export controls, financial regulations, communications laws, privacy laws, intellectual property laws, or laws relating to illegal content, child safety, harassment, fraud, or harmful activity.</p>
-            <p>Crypto and blockchain features may be restricted or regulated in some countries. You are responsible for knowing whether wallet login, crypto donations, token transfers, or blockchain transactions are legal for you.</p>
+            <p>Crypto and blockchain features may be restricted or regulated in some countries. You are responsible for knowing whether wallet accounts, crypto donations, token transfers, or blockchain transactions are legal for you.</p>
           </Section>
 
           <Section title="27. Changes to These Terms">
