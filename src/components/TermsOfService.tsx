@@ -220,13 +220,13 @@ const TermsOfService = () => {
 
           <Section title="28. Governing Law and Disputes">
             <p>These Terms are governed by the laws of the Netherlands, excluding its conflict-of-law rules.</p>
-            <p>Before bringing a formal claim, you agree to contact XMO at <code>xmoapp@proton.me</code> and give us a reasonable opportunity to resolve the dispute informally. If the dispute cannot be resolved, it may be submitted to the competent courts of the Netherlands.</p>
+            <p>Before bringing a formal claim, you agree to contact XMO at <code>xmomessenger@gmail.com</code> and give us a reasonable opportunity to resolve the dispute informally. If the dispute cannot be resolved, it may be submitted to the competent courts of the Netherlands.</p>
             <p>Nothing in this section limits any mandatory consumer-protection rights or other rights that cannot legally be waived under applicable law.</p>
           </Section>
 
           <Section title="29. Contact">
             <p>For questions about these Terms, rights complaints, legal requests, or service issues, contact:</p>
-            <p><code>xmoapp@proton.me</code></p>
+            <p><code>xmomessenger@gmail.com</code></p>
           </Section>
 
         </div>

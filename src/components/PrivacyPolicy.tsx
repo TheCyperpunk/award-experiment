@@ -214,7 +214,7 @@ const PrivacyPolicy = () => {
 
           <Section title="19. Contact">
             <p>For privacy questions or requests, contact:</p>
-            <p><code>xmoapp@proton.me</code></p>
+            <p><code>xmomessenger@gmail.com</code></p>
           </Section>
 
         </div>
