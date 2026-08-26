@@ -219,9 +219,9 @@ const TermsOfService = () => {
           </Section>
 
           <Section title="28. Governing Law and Disputes">
-            <p>The governing law and dispute forum for XMO should be completed by the legal operator of XMO before public launch. Until a formal governing law section is finalized, you agree to first contact XMO and try to resolve disputes informally. This does not limit rights that cannot be waived under applicable law.</p>
-            <p><code>Governing law: [add jurisdiction]</code></p>
-            <p><code>Dispute forum: [add court/arbitration/forum details]</code></p>
+            <p>These Terms are governed by the laws of the Netherlands, excluding its conflict-of-law rules.</p>
+            <p>Before bringing a formal claim, you agree to contact XMO at <code>xmoapp@proton.me</code> and give us a reasonable opportunity to resolve the dispute informally. If the dispute cannot be resolved, it may be submitted to the competent courts of the Netherlands.</p>
+            <p>Nothing in this section limits any mandatory consumer-protection rights or other rights that cannot legally be waived under applicable law.</p>
           </Section>
 
           <Section title="29. Contact">
