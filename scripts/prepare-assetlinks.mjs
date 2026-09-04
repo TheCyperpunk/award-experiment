@@ -7,6 +7,8 @@ const primaryFingerprint = (process.env.XMO_ANDROID_APP_SIGNING_SHA256 ?? "")
   .toUpperCase();
 const debugFingerprint =
   "07:5E:98:55:4B:3F:80:A0:CA:AC:1D:FE:A1:85:43:2E:62:6C:B7:08:7E:44:01:50:B5:9D:50:AB:CF:61:15:47";
+const localReleaseFingerprint =
+  "3B:58:20:A0:35:70:7F:9F:B9:F0:DA:C4:A9:E7:D6:35:73:60:C7:F3:6E:44:25:48:9F:7F:5E:12:88:0F:62:D0";
 const outputPath = resolve("public/.well-known/assetlinks.json");
 const fingerprintPattern = /^(?:[0-9A-F]{2}:){31}[0-9A-F]{2}$/;
 const isNetlifyBuild = process.env.NETLIFY === "true";
@@ -24,7 +26,9 @@ if (!primaryFingerprint) {
   process.exit(0);
 }
 
-const fingerprints = Array.from(new Set([primaryFingerprint, debugFingerprint]));
+const fingerprints = Array.from(
+  new Set([primaryFingerprint, debugFingerprint, localReleaseFingerprint]),
+);
 const invalidFingerprint = fingerprints.find(
   (candidate) => !fingerprintPattern.test(candidate),
 );
